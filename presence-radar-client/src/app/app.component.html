@@ -1,0 +1,24 @@
+<clr-main-container>
+  <clr-header>
+    <div class="branding">
+      <a href="#" class="nav-link">
+        <span class="clr-icon clr-clarity-logo"></span>
+        <span class="title">Presence Radar</span>
+      </a>
+    </div>
+      <div class="header-nav" [clr-nav-level]="1">
+          <a class="nav-link" href="#" [routerLink]="['/persons']" routerLinkActive="active"><span class="nav-text">Persons</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/tokens']" routerLinkActive="active"><span class="nav-text">Tokens</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/settings']" routerLinkActive="active"><span class="nav-text">Settings</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/logs']" routerLinkActive="active"><span class="nav-text">Logs</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
+      </div>
+    <div class="header-actions">
+    </div>
+  </clr-header>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</clr-main-container>

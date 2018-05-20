@@ -1,0 +1,51 @@
+<div *ngFor="let token of tokens">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+          <div class="card">
+              <div class="card-header">
+                {{token.name}}
+              </div>
+              <div class="card-block">
+                  <div class="card-text">
+                        <div class="form-group row">
+                            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                <label for="inRange">UID:</label>
+                            </div>
+                            <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12">
+                                <label id="inRange">{{token.uid}}</label>
+                            </div>
+                        </div>
+                      <div class="form-group row">
+                          <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                              <label for="inRange">Within range:</label>
+                          </div>
+                          <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12">
+                              <label id="inRange">Ja</label>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                              <label for="person">Person:</label>
+                          </div>
+                          <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12">
+                              <label id="person">{{token.person.name}}</label>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                              <label for="active">Aktive:</label>
+                          </div>
+                          <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12">
+                              <label id="active">{{token.active}}</label>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-footer">
+                  <button class="btn btn-sm btn-link" [routerLink]="['/token-edit', token.id]">Edit</button>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" [routerLink]="['/token-add']">Add</button>

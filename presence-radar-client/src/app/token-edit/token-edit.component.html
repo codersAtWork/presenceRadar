@@ -1,0 +1,72 @@
+<form class = "compact" #tokenForm="ngForm" (ngSubmit)="save(tokenForm.value)">
+    <div class="row">
+        <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    <label>Bluetooth token</label>
+                </div>
+                <div class="card-block">
+                    <div class="card-text">
+                        <input type="hidden" name="href" [(ngModel)]="token.href"/>
+                        <div class="form-group">
+                            <label for="tokenName">Name:</label>
+                            <label for="tokenName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md"
+                                [class.invalid]="tokenNameInput.invalid && (tokenNameInput.dirty || tokenNameInput.touched)">
+                                <input type="text" id="tokenName" name="name" placeholder="Enter name" required
+                                    [(ngModel)]="token.name"
+                                    #tokenNameInput="ngModel">
+                                  <span class="tooltip-content">
+                                      Name is Required.
+                                  </span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="tokenUid">UID:</label>
+                            <label for="tokenUid" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md"
+                                [class.invalid]="tokenUidInput.invalid && (tokenUidInput.dirty || tokenUidInput.touched)">
+                                <input type="text" id="tokenUid" name="uid" placeholder="Enter UID" required
+                                    [(ngModel)]="token.uid"
+                                    #tokenUidInput="ngModel">
+                                  <span class="tooltip-content">
+                                      UID is Required.
+                                  </span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="person">Person</label>
+                            <div class="select">
+                                <select id="person" name="person" [(ngModel)]="token.person">
+                                    <option *ngFor="let p of persons" [ngValue]="person">{{p.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="active">Active:</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="active" name="active" [(ngModel)]="token.active"/>
+                                <label for="active"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="foundAction">On token found:</label>
+                            <input type="text" id="foundAction" name="foundAction" placeholder="Enter URL" required size="50"
+                                    [(ngModel)]="token.foundAction"
+                                    #tokenFoundActionInput="ngModel">
+                        </div>
+                        <div class="form-group">
+                            <label for="lostAction">On token lost:</label>
+                            <input type="text" id="lostAction" name="lostAction" placeholder="Enter URL" required size="50"
+                                    [(ngModel)]="token.lostAction"
+                                    #lostFoundActionInput="ngModel">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" type="submit" [disabled]="tokenForm.form.invalid">Save</button>
+                    <button class="btn btn-danger" (click)="remove(token.href)" *ngIf="token.href" type="button">Delete</button>
+                    <a class="btn btn-outline" routerLink="/tokens">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,68 @@
+<form #personForm="ngForm" (ngSubmit)="save(personForm.value)">
+
+    <div class="row">
+        <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    <label>{{person.name ? 'Edit' : 'Add'}} person information</label>
+                </div>
+                <div class="card-block">
+                    <div class="card-text">
+                        <input type="hidden" name="id" [(ngModel)]="person.id"/>
+                        <div class="form-group">
+                            <label for="personName">Name</label>
+                            <label for="personName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md"
+                                [class.invalid]="personNameInput.invalid && (personNameInput.dirty || personNameInput.touched)">
+                                <input type="text" id="personName" name="name" placeholder="Enter name" required
+                                    [(ngModel)]="person.name"
+                                    #personNameInput="ngModel">
+                                  <span class="tooltip-content">
+                                      Name is Required.
+                                  </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" type="submit" [disabled]="personForm.form.invalid">Save</button>
+                    <button class="btn btn-danger" (click)="remove(person.id)" *ngIf="person.id" type="button">Delete</button>
+                    <a class="btn btn-outline" routerLink="/persons">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Token
+            </div>
+            <div class="card-block">
+                <div class="card-text">
+                    <div *ngFor="let token of person.tokens">
+                        Name: {{token.name}} <br/>
+                        Active: {{token.active}}  <br/>
+                        Within range: Yes
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+        <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    Logs
+                </div>
+                <div class="card-block">
+                    <div class="card-text">
+                        To be done
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
